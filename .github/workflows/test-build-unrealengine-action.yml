@@ -1,0 +1,14 @@
+name: Test UnrealEngine Build Action
+run-name: Test paulogodinho-github-actions/build-unreal-engine@main by @${{ github.actor }}
+on:
+  workflow_dispatch:
+
+jobs:
+  call-build-action:
+    name: Build Unreal Engine from Source
+    runs-on: unreal-builder
+    steps:
+      - id: call-action
+        uses: paulogodinho-github-actions/build-unreal-engine@main
+        with:
+          engine-path: "C:/UnrealEngine_update_Epic5.0.2"

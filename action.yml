@@ -1,0 +1,29 @@
+
+name: Build UnrealEngine
+author: Paulo Godinho
+description: >
+  Builds Unreal Engine Editor, compatible with versions 5.0.x 
+inputs:
+  engine-path:  # id of input
+    description: 'Location of Unreal Engine source files'
+    required: true
+    default: 'C:/UnrealEngine'
+runs:
+  using: composite
+  steps:
+    - run: ${{ github.action_path }}/src/BuildUnrealEditor.ps1
+      shell: pwsh
+      env:
+        ENGINE_PATH: ${{ inputs.engine-path }}
+    - run: ${{ github.action_path }}/src/BuildUnrealFrontEnd.ps1
+      shell: pwsh
+      env:
+        ENGINE_PATH: ${{ inputs.engine-path }}
+    - run: ${{ github.action_path }}/src/BuildShaderCompilerWorker.ps1
+      shell: pwsh
+      env:
+        ENGINE_PATH: ${{ inputs.engine-path }}
+    - run: ${{ github.action_path }}/src/BuildAutomationTool.ps1
+      shell: pwsh
+      env:
+        ENGINE_PATH: ${{ inputs.engine-path }}
