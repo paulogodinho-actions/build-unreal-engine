@@ -14,7 +14,7 @@ Write-Output 'Installing BuildUtils to Find MSBuild bundled with Visual Studio I
 Install-Module BuildUtils -Scope CurrentUser -Force
 
 $msBuildExe = Get-LatestMsbuildLocation
-if (Test-Path -Path $msBuildExe -eq $false) {
+if ((Test-Path -Path $msBuildExe) -eq $false) {
     $errorMessage = "Could not find MSBuild.exe at $msBuildExe, is Visual Studio properly installed?"
     Write-Error $errorMessage
     throw $errorMessage
