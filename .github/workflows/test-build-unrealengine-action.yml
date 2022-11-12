@@ -1,5 +1,5 @@
 name: Test UnrealEngine Build Action
-run-name: Test paulogodinho-github-actions/build-unreal-engine@main by @${{ github.actor }}
+run-name: Test paulogodinho-github-actions/build-unreal-engine, Triggered by @${{ github.actor }}
 on:
   workflow_dispatch:
 
