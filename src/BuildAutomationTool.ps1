@@ -19,6 +19,7 @@ if (Test-Path -Path $msBuildExe -eq $false) {
     Write-Error $errorMessage
     throw $errorMessage
 }
+Write-Output "Found MSBuild.exe at $msBuildExe"
 
 Write-Output "Building: AutomationTool | Development | AnyCPU"
 $automationToolParams = @(
