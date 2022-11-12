@@ -9,6 +9,6 @@ jobs:
     runs-on: unreal-builder
     steps:
       - id: call-action
-        uses: paulogodinho-github-actions/build-unreal-engine@feature/dinamically-find-msbuilder
+        uses: paulogodinho-github-actions/build-unreal-engine@main
         with:
           engine-path: "C:/UnrealEngine_update_Epic5.0.2"
