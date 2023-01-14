@@ -4,21 +4,31 @@ author: Paulo Godinho
 description: >
   Builds Unreal Engine Editor, compatible with versions 5.0.x 
 inputs:
-  engine-path:  # id of input
+  engine-path:
     description: 'Location of Unreal Engine source files'
     required: true
     default: 'C:/UnrealEngine'
+  run-setup-bat:
+    description: 'Run Setup.Bat before building'
+    required: true
+    default: false
+  run-generate-project-files-bat:
+    description: 'Run GenerateProjectFiles.Bat before building'
+    required: true
+    default: false
 runs:
   using: composite
   steps:
 
     - name: Run Setup.bat
+      if: ${{ inputs.run-setup-bat == 'true' }}
       run: ${{ github.action_path }}/src/RunSetupBatScript.ps1
       shell: pwsh
       env:
         ENGINE_PATH: ${{ inputs.engine-path }}
 
     - name: Run GenerateProjectFiles.bat
+      if: ${{ inputs.run-generate-project-files-bat == 'true' }}
       run: ${{ github.action_path }}/src/RunGenerateProjectFiles.ps1
       shell: pwsh
       env:
