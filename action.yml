@@ -11,19 +11,39 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: ${{ github.action_path }}/src/BuildUnrealEditor.ps1
+
+    - name: Run Setup.bat
+      run: ${{ github.action_path }}/src/RunSetupBatScript.ps1
       shell: pwsh
       env:
         ENGINE_PATH: ${{ inputs.engine-path }}
-    - run: ${{ github.action_path }}/src/BuildUnrealFrontEnd.ps1
+
+    - name: Run GenerateProjectFiles.bat
+      run: ${{ github.action_path }}/src/RunGenerateProjectFiles.ps1
       shell: pwsh
       env:
         ENGINE_PATH: ${{ inputs.engine-path }}
-    - run: ${{ github.action_path }}/src/BuildShaderCompilerWorker.ps1
+
+    - name: Build Editor
+      run: ${{ github.action_path }}/src/BuildUnrealEditor.ps1
       shell: pwsh
       env:
         ENGINE_PATH: ${{ inputs.engine-path }}
-    - run: ${{ github.action_path }}/src/BuildAutomationTool.ps1
+    
+    - name: Build UnrealFrontend
+      run: ${{ github.action_path }}/src/BuildUnrealFrontEnd.ps1
+      shell: pwsh
+      env:
+        ENGINE_PATH: ${{ inputs.engine-path }}
+    
+    - name: Build ShaderCompileWorker
+      run: ${{ github.action_path }}/src/BuildShaderCompilerWorker.ps1
+      shell: pwsh
+      env:
+        ENGINE_PATH: ${{ inputs.engine-path }}
+    
+    - name: Build AutomationTool
+      run: ${{ github.action_path }}/src/BuildAutomationTool.ps1
       shell: pwsh
       env:
         ENGINE_PATH: ${{ inputs.engine-path }}
