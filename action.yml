@@ -10,11 +10,11 @@ inputs:
     default: 'C:/UnrealEngine'
   run-setup-bat:
     description: 'Run Setup.Bat before building'
-    required: true
+    required: false
     default: false
   run-generate-project-files-bat:
     description: 'Run GenerateProjectFiles.Bat before building'
-    required: true
+    required: false
     default: false
 runs:
   using: composite
